@@ -14,6 +14,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
+use Filament\Forms\FormsComponent;
 use Filament\Forms\Set;
 use Filament\Infolists\Components\Group as ComponentsGroup;
 use Filament\Infolists\Components\Section as ComponentsSection;
@@ -38,13 +39,12 @@ class ProductResource extends Resource
             ->schema([
                 Group::make()->schema([
                     Section::make('Product Information')->schema([
-                        TextInput::make('name')
+                    TextInput::make('name')
                             ->required()
                             ->maxLength(255)
                             ->afterStateUpdated(function(string $operation, $state, Set $set){
                                 if($operation !== 'create'){
-                                    return;
-                                }
+                                    return;}
                                 $set('slug', Str::slug($state));
                             }),
 
