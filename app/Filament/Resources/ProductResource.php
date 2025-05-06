@@ -5,6 +5,11 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\ProductResource\Pages;
 use App\Filament\Resources\ProductResource\RelationManagers;
 use App\Models\Product;
+use BladeUI\Icons\Components\Icon;
+use Filament\Actions\ActionGroup;
+use Filament\Actions\DeleteAction;
+use Filament\Actions\EditAction;
+use Filament\Actions\ViewAction;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Group;
@@ -20,6 +25,10 @@ use Filament\Infolists\Components\Group as ComponentsGroup;
 use Filament\Infolists\Components\Section as ComponentsSection;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -59,12 +68,14 @@ class ProductResource extends Resource
                             ->columnSpanFull()
                             ->fileAttachmentsDirectory('products'),
                     ])->columns(2),
-                    section::make('image')->schema([
-                        FileUpload::make('image')
+                    Section::make('Images')->schema([
+                        FileUpload::make('images')
                             ->multiple()
-                            ->directory('products')
+                            ->image()
                             ->reorderable()
-                            ->maxFiles(5),
+                            ->maxFiles(5)
+                            ->directory('products'),
+                        
                     ])
                 ])->columnSpan(2),
                 
@@ -73,7 +84,7 @@ class ProductResource extends Resource
                         TextInput::make('price')
                         ->numeric()
                         ->required()
-                        ->prefix('Rp'),
+                        ->prefix('IDR'),
                     ]),
                     section::make('association')->schema([
                         Select::make('category_id')
@@ -116,13 +127,62 @@ class ProductResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('name')
+                ->searchable(),
+
+                TextColumn::make('category.name')
+                ->sortable()
+                ->label ('Category'),
+
+                TextColumn::make('brand.name')
+                ->sortable()
+                ->label ('Brand'),
+
+                TextColumn::make('price')
+                ->numeric(decimalPlaces:0,decimalSeparator:'.', thousandsSeparator:',')
+                ->prefix('Rp.')
+                ->sortable()
+                ->searchable()
+                ->label('price'),
+
+                IconColumn::make('is_featured')
+                ->boolean(),
+
+                IconColumn::make('on_sale')
+                ->boolean(),
+
+                IconColumn::make('in_stock')
+                ->boolean(),
+
+                IconColumn::make('is_active')
+                ->boolean(),
+
+                TextColumn::make('created_at')
+                ->dateTime()
+                ->sortable()
+                ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('updated_at')
+                ->dateTime()
+                ->sortable()
+                ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                SelectFilter::make('category')
+                    ->relationship('category', 'name')
+                    ->multiple()
+                    ->placeholder('Select Category'),
+                SelectFilter::make('brand')
+                    ->relationship('brand', 'name')
+                    ->multiple()
+                    ->placeholder('Select Brand'),
+                
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\ActionGroup::make([
+                    Tables\Actions\ViewAction::make(),
+                    Tables\Actions\EditAction::make(),
+                    Tables\Actions\DeleteAction::make(),
+                ])
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
