@@ -1,14 +1,14 @@
 <div>
-    <div class="w-full h-screen bg-gradient-to-r from-blue-200 to-cyan-200 py-10 px-4 sm:px-6 lg:px-8 mx-auto">
+    <div class="w-full min-h-screen bg-gradient-to-r from-blue-200 to-cyan-200 py-8 md:py-16 px-4 sm:px-6 lg:px-8">
   <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Grid -->
-    <div class="grid md:grid-cols-2 gap-4 md:gap-8 xl:gap-20 md:items-center">
-      <div>
-        <h1 class="block text-3xl font-bold text-gray-800 sm:text-4xl lg:text-6xl lg:leading-tight dark:text-white">Start your journey with <span class="text-blue-600">Platinum Computer</span></h1>
-        <p class="mt-3 text-lg text-gray-800 dark:text-gray-400">Purchase wide varities of electronics products like Smartphones, Laptops, Smartwatches, Television and many more.</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 xl:gap-20 items-center min-h-[80vh] md:min-h-[70vh]">
+      <div class="order-2 md:order-1 text-center md:text-left">
+  <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-800 leading-tight dark:text-white">Start your journey with <span class="text-blue-600">Platinum Computer</span></h1>
+        <p class="mt-4 md:mt-6 text-base md:text-lg text-gray-800 dark:text-gray-400 max-w-lg mx-auto md:mx-0">Purchase wide varities of electronics products like Smartphones, Laptops, Smartwatches, Television and many more.</p>
 
         <!-- Buttons -->
-        <div class="mt-7 grid gap-3 w-full sm:inline-flex">
+        <div class="mt-6 md:mt-8 flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
           <a class="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="/register">
             Get started
             <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -42,10 +42,6 @@
                 <path d="M27.0352 1.6307L33.9181 16.3633C34.2173 16.6768 34.5166 16.9903 34.8158 16.9903L50.0779 19.1845C50.9757 19.1845 51.275 20.4383 50.6764 21.0652L39.604 32.3498C39.3047 32.6632 39.3047 32.9767 39.3047 33.2901L41.998 49.2766C42.2973 50.217 41.1002 50.8439 40.5017 50.5304L26.4367 43.3208C26.1375 43.3208 25.8382 43.3208 25.539 43.3208L11.7732 50.8439C10.8754 51.1573 9.97763 50.5304 10.2769 49.59L12.9702 33.6036C12.9702 33.2901 12.9702 32.9767 12.671 32.6632L1.29923 21.0652C0.700724 20.4383 0.999979 19.4979 1.89775 19.4979L17.1598 17.3037C17.459 17.3037 17.7583 16.9903 18.0575 16.6768L24.9404 1.6307C25.539 0.69032 26.736 0.69032 27.0352 1.6307Z" fill="currentColor" />
               </svg>
             </div>
-
-            <p class="mt-3 text-sm text-gray-800 dark:text-gray-200">
-              <span class="font-bold">4.6</span> /5 - from 12k reviews
-            </p>
 
             <div class="mt-5">
               <!-- Star -->
@@ -83,10 +79,6 @@
               </svg>
             </div>
 
-            <p class="mt-3 text-sm text-gray-800 dark:text-gray-200">
-              <span class="font-bold">4.8</span> /5 - from 5k reviews
-            </p>
-
             <div class="mt-5">
               <!-- Star -->
               <svg class="h-auto w-16 text-gray-800 dark:text-white" width="110" height="28" viewBox="0 0 110 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -106,8 +98,10 @@
       </div>
       <!-- End Col -->
 
-      <div class="relative ms-4">
-        <img class="w-full rounded-md" src="https://static.vecteezy.com/system/resources/previews/011/993/278/non_2x/3d-render-online-shopping-bag-using-credit-card-or-cash-for-future-use-credit-card-money-financial-security-on-mobile-3d-application-3d-shop-purchase-basket-retail-store-on-e-commerce-free-png.png" alt="Image Description">
+      <div class="order-1 md:order-2 relative">
+  <div class="relative">
+         <img class="w-full h-64 sm:h-80 md:h-96 lg:h-[400px] xl:h-[500px] object-contain rounded-lg" 
+         src="https://static.vecteezy.com/system/resources/previews/011/993/278/non_2x/3d-render-online-shopping-bag-using-credit-card-or-cash-for-future-use-credit-card-money-financial-security-on-mobile-3d-application-3d-shop-purchase-basket-retail-store-on-e-commerce-free-png.png" alt="Shopping illustration">
         <div class="absolute inset-0 -z-[1] bg-gradient-to-tr from-gray-200 via-white/0 to-white/0 w-full h-full rounded-md mt-4 -mb-4 me-4 -ms-4 lg:mt-6 lg:-mb-6 lg:me-6 lg:-ms-6 dark:from-slate-800 dark:via-slate-900/0 dark:to-slate-900/0"></div>
 
         <!-- SVG-->
@@ -246,7 +240,7 @@
 
 <section class="py-14 font-poppins dark:bg-gray-800">
   <div class="max-w-6xl px-4 py-6 mx-auto lg:py-4 md:px-6">
-    <div class="max-w-xl mx-auto">
+    <div class="max-w-6xl mx-auto">
       <div class="text-center ">
         <div class="relative flex flex-col items-center">
           <h1 class="text-5xl font-bold dark:text-gray-200"> Customer <span class="text-blue-500"> Reviews
