@@ -51,15 +51,15 @@
             </ul>
           </div>
 
-          <div class="p-4 mb-5 bg-white border border-gray-200 dark:bg-gray-900 dark:border-gray-900">
+           <div class="p-4 mb-5 bg-white border border-gray-200 dark:bg-gray-900 dark:border-gray-900">
             <h2 class="text-2xl font-bold dark:text-gray-400">Price</h2>
             <div class="w-16 pb-2 mb-6 border-b border-rose-600 dark:border-gray-400"></div>
             <div>
-            <div class="font-semibold">{{ Number::currency($price_range, 'IDR') }}</div>
-              <input type="range" wire:model="price_range" class="w-full h-1 mb-4 bg-blue-100 rounded appearance-none cursor-pointer" max="10000000" value="300000" step="1000">
-              <div class="flex justify-between ">
-                <span class="inline-block text-lg font-bold text-blue-400 ">{{ Number::currency(1000, 'IDR') }}</span>
-                <span class="inline-block text-lg font-bold text-blue-400 ">{{ Number::currency(100000000, 'IDR') }}</span>
+              <div class="font-semibold">{{ Number::currency($price_range, 'IDR') }}</div>
+              <input type="range" wire:model.live.debounce.300ms="price_range" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" min="1000" max="100000000" step="1000">
+              <div class="flex justify-between">
+                <span class="inline-block text-lg font-bold text-blue-400">{{ Number::currency(1000, 'IDR') }}</span>
+                <span class="inline-block text-lg font-bold text-blue-400">{{ Number::currency(100000000, 'IDR') }}</span>
               </div>
             </div>
           </div>
@@ -68,7 +68,7 @@
           <div class="px-3 mb-4">
             <div class="items-center justify-between hidden px-3 py-2 bg-gray-100 md:flex dark:bg-gray-900 ">
               <div class="flex items-center justify-between">
-                <select wire:model="sort" class="block w-40 text-base bg-gray-100 cursor-pointer dark:text-gray-400 dark:bg-gray-900">
+                <select wire.model class="block w-40 text-base bg-gray-100 cursor-pointer dark:text-gray-400 dark:bg-gray-900">
                   <option value="latest">Sort by latest</option>
                   <option value="price">Sort by Price</option>
                 </select>
@@ -77,7 +77,7 @@
           </div>
           <div class="flex flex-wrap items-center ">
 
-            @foreach ($products as $product)
+            @forelse ($products as $product)
              <div class="w-full px-3 mb-6 sm:w-1/2 md:w-1/3" wire:key="{{ $product->id }}">
               <div class="border border-gray-300 dark:border-gray-700">
                 <div class="relative bg-gray-200">
@@ -106,7 +106,11 @@
                 </div>
               </div>
             </div>
-            @endforeach
+            @empty
+              <div class="w-full text-center">
+                <p class="text-gray-500 dark:text-gray-400">No products found.</p>
+              </div>
+            @endforelse
 
           </div>
           <!-- pagination start -->
